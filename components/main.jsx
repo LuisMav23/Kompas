@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import MapView from "react-native-maps";
+import MapView, {Marker} from "react-native-maps";
 
 //Importing components
 import Location from "../components/location";
@@ -21,8 +21,8 @@ import SOS from "./cards/sos";
 
 const Main = () => {
   const initialRegion = {
-    latitude: 37.78825,
-    longitude: -122.4324,
+    latitude: 14.587289,
+    longitude: 120.975486,
     latitudeDelta: 0.0922,
     longitudeDelta: 0.0421,
   };
@@ -119,7 +119,36 @@ const Main = () => {
             <NewsButton onPress={handleNewsButtonPress} />
             <SOSButton onPress={handleSOSButtonPress}/>
           </View>
-          <MapView style={styles.map} initialRegion={initialRegion} />
+          <MapView style={styles.map} initialRegion={initialRegion}>
+          <Marker
+            coordinate={{ latitude: 14.587289, longitude: 120.975486 }}
+            title="Warning"
+            description="There are dangerous incidents in this area."
+            image={require('../public/red.png')}
+            pinColor="red" // specify pin color
+            />
+            <Marker
+            coordinate={{ latitude: 14.589229, longitude: 120.969768 }}
+            title="Emergency"
+            description="There's an emergency in this area."
+            image={require('../public/violet.png')}
+            pinColor="violet" // specify pin color
+            />
+            <Marker
+            coordinate={{ latitude: 14.579405, longitude: 120.981738 }}
+            title="Safe"
+            description="This are hase increased in safety."
+            image={require('../public/green.png')}
+            pinColor="green" // specify pin color
+            />
+            <Marker
+            coordinate={{ latitude: 14.596754, longitude: 120.976669}}
+            title="Caution"
+            description="Be cautious this areas might be dangerous."
+            image={require('../public/yellow.png')}
+            pinColor="yellow" // specify pin color
+            />
+          </MapView>
         </SafeAreaView>
       )}
       {(isNewsButtonPressed && isAbleToOpen) && <NewsList />}

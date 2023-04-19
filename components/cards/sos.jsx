@@ -17,10 +17,10 @@ const SOS = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={{ fontSize: 28, color: "#FD4233", fontWeight: "900" }}>
+      <Text style={{ fontSize: 28, color: "#FD4233", fontWeight: "900", marginBottom: 5}}>
         SEND SOS
       </Text>
-      <Text style={{ fontSize: 14, color: "#000", fontWeight: "200" }}>
+      <Text style={{ fontSize: 14, color: "#000", fontWeight: "200", marginBottom: 15}}>
         Your current location and message will be sent to your emergency contacts.
       </Text>
       <TextInput
@@ -31,10 +31,10 @@ const SOS = () => {
         onChangeText={handleMessInputChange}
         placeholder="Type your message here"
       />
-      <Text style={{ fontSize: 12, color: "grey", fontWeight: "400" }}>
+      <Text style={{ fontSize: 12, color: "grey", fontWeight: "400", marginBottom: 25}}>
         Note: to change who recieves your SOS message, go to settings.
       </Text>
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity style={styles.button} >
         <Image
           source={require("../../public/SOSbutton.png")}
           style={styles.image}
@@ -53,12 +53,12 @@ const styles = StyleSheet.create({
     zIndex: 2,
   },
   button: {
-    width: 150,
-    height: 150,
+    width: 100,
+    height: 100,
   },
   image: {
-    width: 150,
-    height: 150,
+    width: 100,
+    height: 100,
   },
   input: {
     height: 150,
