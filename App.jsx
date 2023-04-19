@@ -1,11 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView } from "react-native";
-import MapView from "react-native-maps";
 
 //Importing components
-import Location from "./components/location";
-import RoundButton from "./components/buttons";
 import StartupScreen from "./components/startUp";
+import Main from "./components/main";
 
 export default function App() {
   const initialRegion = {
@@ -16,11 +14,12 @@ export default function App() {
   };
 
   const [isLoading, setIsLoading] = React.useState(true);
+  const [isLogged, setIsLogged] = React.useState(false);
 
   React.useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 5000);
+    }, 1000);
   }, []);
 
   return (
@@ -28,16 +27,9 @@ export default function App() {
       {isLoading ? (
         <StartupScreen />
       ) : (
-        <SafeAreaView style={styles.container}>
-          <View style={styles.topRow}>
-            <RoundButton iconPath={require("./public/settingsIcon.png")} />
-            <Location />
-            <RoundButton iconPath={require("./public/profileIcon.png")} />
-          </View>
-          <View style={styles.bottomRow}></View>
-          <MapView style={styles.map} initialRegion={initialRegion} />
-        </SafeAreaView>
+        <Main/>
       )}
+        
     </SafeAreaView>
   );
 }
@@ -46,48 +38,6 @@ const styles = StyleSheet.create({
   parent: {
     flex: 1,
   },
-  container: {
-    flex: 1,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-  },
-  map: {
-    ...StyleSheet.absoluteFillObject,
-    flex: 1,
-  },
-  topRow: {
-    flex: 1,
-    flexDirection: "row",
-    position: "absolute",
-    justifyContent: "space-between",
-    alignSelf: "flex-start",
-    zIndex: 1,
-    marginTop: 50,
-    width: "100%",
-    height: 60,
-    paddingLeft: 20,
-    paddingRight: 20,
-  },
-  bottomRow: {
-    flex: 1,
-    flexDirection: "column",
-    position: "absolute",
-    backgroundColor: "white",
-    justifyContent: "space-between",
-    alignItems: "center",
-    alignSelf: "flex-end",
-    zIndex: 1,
-    width: "100%",
-    height: 250,
-    paddingLeft: 20,
-    paddingRight: 20,
-    borderTopLeftRadius: 50,
-    borderTopRightRadius: 50,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: -2 },
-    shadowOpacity: 0.5,
-    shadowRadius: 4,
-    elevation: 5,
-  },
+  
 });
+
